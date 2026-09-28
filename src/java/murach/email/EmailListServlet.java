@@ -57,7 +57,7 @@ public class EmailListServlet extends HttpServlet {
 
                 // --- GỬI MAIL XÁC NHẬN CHO EMAIL MỚI ĐĂNG KÝ (ĐỊNH DẠNG HTML ĐẸP MẮT) ---
                 String to = email;                                // Gửi tới email thực tế người dùng vừa nhập
-                String from = "your_email@gmail.com";             // Thay bằng Gmail dùng làm Server của bạn
+                String from = "baitap868@gmail.com";             // Thay bằng Gmail dùng làm Server của bạn
                 String subject = "🎉 Chúc mừng bạn đã đăng ký thành công!";
 
                 // Thiết kế giao diện Email dạng Card (Đã bỏ nút Khám Phá Ngay)
