@@ -30,7 +30,7 @@
             <!-- ⚠️ LẦN DEPLOY ĐẦU TIÊN: đổi thành "create" để JPA tự tạo bảng User
                  Sau khi chạy thử thành công 1 lần → đổi lại thành "none" để tránh mất dữ liệu -->
             <property name="jakarta.persistence.schema-generation.database.action"
-                      value="create"/>
+                      value="none"/>
 
             <!-- Log chi tiết để debug -->
             <property name="eclipselink.logging.level" value="FINE"/>
