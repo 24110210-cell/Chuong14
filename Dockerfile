@@ -14,7 +14,7 @@ ENV JAVA_HOME=/usr/local/jdk-26
 ENV PATH=$JAVA_HOME/bin:$PATH
 
 RUN rm -rf /usr/local/tomcat/webapps/*
-COPY dist/mail.war /usr/local/tomcat/webapps/ROOT.war
+COPY dist/Bai13_1.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]

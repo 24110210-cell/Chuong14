@@ -3,23 +3,18 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10pt;
     margin: 20px 30px;
-    color: #333333;
+    color: #333333;/*xám đậm*/
 }
 
 /* Định dạng tiêu đề */
-h1, h2 {
+h1 {
     color: teal;
     font-size: 16pt;
     margin-top: 15px;
     margin-bottom: 10px;
 }
 
-h3 {
-    color: teal;
-    font-size: 11pt;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
+
 
 /* Thẻ mô tả bên dưới tiêu đề chính */
 p {
@@ -47,23 +42,12 @@ select {
     box-sizing: border-box;
 }
 
-/* Định dạng ô Radio và Checkbox */
-input[type="radio"], 
-input[type="checkbox"] {
-    margin-right: 0.3em;
-    vertical-align: middle;
-}
 
 /* Đảm bảo dòng xuống hàng sạch sẽ */
 br {
     clear: both;
 }
 
-/* Định dạng nhãn đặc thù cho phần Please contact me by */
-label.contact-label {
-    width: 12em;
-    float: left;
-}
 
 /* Nút Submit */
 input[type="submit"], #submit {
@@ -78,9 +62,3 @@ input[type="submit"]:hover {
     background-color: #e0e0e0;
 }
 
-/* Logo */
-.logo {
-    max-height: 80px;
-    display: block;
-    margin-bottom: 10px;
-}
