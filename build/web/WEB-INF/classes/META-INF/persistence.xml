@@ -10,15 +10,25 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
+            <!-- JDBC URL kết nối tới Aiven MySQL
+                 - Dùng sslMode (lạc đà) để Connector/J nhận đúng
+                 - serverTimezone=UTC tránh lỗi lệch múi giờ -->
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/murach?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
+                      value="jdbc:mysql://mysql-7cd115e-student-d0a8.h.aivencloud.com:17656/defaultdb?sslMode=REQUIRED&amp;allowPublicKeyRetrieval=true&amp;useSSL=true&amp;serverTimezone=UTC"/>
+
             <property name="jakarta.persistence.jdbc.driver"
                       value="com.mysql.cj.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.user"
-                      value="root"/>
-            <property name="jakarta.persistence.jdbc.password"
-                      value="123456"/>
 
+            <!-- Tài khoản Aiven -->
+            <property name="jakarta.persistence.jdbc.user"
+                      value="avnadmin"/>
+
+            <!-- Mật khẩu Aiven (nên dùng biến môi trường ở production) -->
+            <property name="jakarta.persistence.jdbc.password"
+                      value="AVNS_8szhpnsDGCOkIXCwSAJ"/>
+
+            <!-- ⚠️ LẦN DEPLOY ĐẦU TIÊN: đổi thành "create" để JPA tự tạo bảng User
+                 Sau khi chạy thử thành công 1 lần → đổi lại thành "none" để tránh mất dữ liệu -->
             <property name="jakarta.persistence.schema-generation.database.action"
                       value="create"/>
 
