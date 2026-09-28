@@ -10,24 +10,17 @@ public class MailUtilGmail {
             String subject, String body, boolean bodyIsHTML)
             throws MessagingException {
 
-        // 1. Cấu hình kết nối SMTP Google (Port 465 - SSL Chuẩn cho Cloud/Render)
+        // 1. Cấu hình kết nối SMTP Google (Port 587 - STARTTLS)
         Properties props = new Properties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
-
-        // Cấu hình SSLSocketFactory bắt buộc cho Port 465
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.socketFactory.fallback", "false");
+        props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 
         Session session = Session.getInstance(props);
-
-        // 🔴 BẬT DEBUG ĐỂ IN LOG KẾT NỐI SMTP LÊN RENDER:
-        session.setDebug(true);
 
         // 2. Soạn nội dung thư
         Message message = new MimeMessage(session);
@@ -39,14 +32,16 @@ public class MailUtilGmail {
         }
 
         // 3. Đặt địa chỉ người gửi và người nhận
+        // 'to' chính là email thực tế mà người dùng vừa nhập trên Form
         Address fromAddress = new InternetAddress(from);
         Address toAddress = new InternetAddress(to);
         message.setFrom(fromAddress);
         message.setRecipient(Message.RecipientType.TO, toAddress);
 
         // 4. THÔNG TIN TÀI KHOẢN GỬI MAIL HỆ THỐNG
-        String systemEmail = "baitap868@gmail.com";
-        String appPassword = "ruho quzl wlqc zfjo";
+        // Đây là Gmail của BẠN đóng vai trò làm Server gửi tin nhắn
+        String systemEmail = "baitap868@gmail.com";          // <--- Điền Gmail của bạn
+        String appPassword = "ruho quzl wlqc zfjo";         // <--- Mật khẩu ứng dụng 16 ký tự
 
         Transport transport = session.getTransport("smtp");
         transport.connect(systemEmail, appPassword);
