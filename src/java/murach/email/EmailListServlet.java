@@ -1,7 +1,6 @@
 package murach.email;
 
 import java.io.IOException;
-import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -56,11 +55,11 @@ public class EmailListServlet extends HttpServlet {
                 UserDB.insert(user);
 
                 // --- GỬI MAIL XÁC NHẬN CHO EMAIL MỚI ĐĂNG KÝ (ĐỊNH DẠNG HTML ĐẸP MẮT) ---
-                String to = email;                                // Gửi tới email thực tế người dùng vừa nhập
-                String from = "baitap868@gmail.com";             // Thay bằng Gmail dùng làm Server của bạn
+                String to = email;                                 // Gửi tới email thực tế người dùng vừa nhập
+                String from = "24110210@student.hcmute.edu.vn";     // Thay bằng Gmail dùng làm Server của bạn
                 String subject = "🎉 Chúc mừng bạn đã đăng ký thành công!";
 
-                // Thiết kế giao diện Email dạng Card (Đã bỏ nút Khám Phá Ngay)
+                // Thiết kế giao diện Email dạng Card
                 String body = "<!DOCTYPE html>"
                         + "<html>"
                         + "<head>"
@@ -96,9 +95,9 @@ public class EmailListServlet extends HttpServlet {
                 boolean isBodyHTML = true; // Bật chế độ gửi email dạng HTML
 
                 try {
-                    // Tự động gửi email qua Gmail
+                    // Tự động gửi email qua Brevo REST API
                     MailUtilGmail.sendMail(to, from, subject, body, isBodyHTML);
-                } catch (MessagingException e) {
+                } catch (Exception e) {
                     String errorMessage = "ERROR: Unable to send email. "
                             + "Check Tomcat logs for details.\n"
                             + "ERROR MESSAGE: " + e.getMessage();
